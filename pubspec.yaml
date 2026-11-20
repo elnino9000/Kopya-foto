@@ -1,0 +1,16 @@
+name: kopyafoto
+description: Kopya Foto - galerideki ayni ve benzer fotograflari bulur, sonuclari gosterir, temizler
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  photo_manager: ^3.7.1
+  crypto: ^3.0.3
+
+flutter:
+  uses-material-design: true
