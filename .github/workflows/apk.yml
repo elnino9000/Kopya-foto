@@ -2,6 +2,8 @@ name: APK olustur
 on:
   push:
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -43,8 +45,18 @@ jobs:
           print(m)
           PY
       - run: flutter pub get
-      - run: flutter build apk --release --no-shrink
+      - run: flutter build apk --release --no-shrink --build-name=1.0.${{ github.run_number }} --build-number=${{ github.run_number }}
       - uses: actions/upload-artifact@v4
         with:
           name: kopya-foto-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+      - name: Son surum olarak yayinla
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cp build/app/outputs/flutter-apk/app-release.apk kopya-foto.apk
+          gh release delete son-surum --yes --cleanup-tag || true
+          gh release create son-surum kopya-foto.apk \
+            --target "$GITHUB_SHA" \
+            --title "Kopya Foto (son sürüm 1.0.${{ github.run_number }})" \
+            --notes "Telefondan indirip kur: kopya-foto.apk"

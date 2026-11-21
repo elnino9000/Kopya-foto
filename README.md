@@ -7,4 +7,4 @@ Silinecekleri sen seçersin; her gruptan en iyi (en yüksek çözünürlüklü) 
 - Benzer: küçük resim parmak izi (dHash) ile karşılaştırılır.
 - Her şey telefonda yapılır, fotoğraflar dışarı gönderilmez.
 
-APK: GitHub > Actions > son çalışma > Artifacts > kopya-foto-apk
+APK: Releases > "Kopya Foto (son sürüm)" > kopya-foto.apk
